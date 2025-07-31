@@ -8,11 +8,43 @@
     "thumbnail": "assets/images/NativeAmericanWomen.jpg"
   },
   {
-    "title": "Peaceful River",
+    "title": "Car",
     "medium": "Oil on Canvas",
     "size": "20\" × 30\"",
-    "price": "₹14,000",
-    "status": "Sold",
-    "thumbnail": "assets/images/sample2.jpg"
+    "price": "₹8,000",
+    "status": "Available",
+    "thumbnail": "assets/images/Car.jpg"
+  },
+  {
+    "title": "Emerald eyed Girl",
+    "medium": "Oil on Canvas",
+    "size": "20\" × 30\"",
+    "price": "₹5,000",
+    "status": "Available",
+    "thumbnail": "assets/images/Geen eyed girl.jpg"
+  },
+  {
+    "title": "Radha Krishna",
+    "medium": "Oil on Canvas",
+    "size": "20\" × 30\"",
+    "price": "₹12,000",
+    "status": "Available",
+    "thumbnail": "assets/images/Radha Krishna.jpg"
+  },
+  {
+    "title": "Sai Baba",
+    "medium": "Oil on Canvas",
+    "size": "20\" × 30\"",
+    "price": "₹18,000",
+    "status": "Available",
+    "thumbnail": "assets/images/Sai Baba.jpg"
+  },
+  {
+    "title": "The Buddha",
+    "medium": "Oil on Canvas",
+    "size": "20\" × 30\"",
+    "price": "₹15,000",
+    "status": "Available",
+    "thumbnail": "assets/images/Buddha.jpg"
   }
 ]

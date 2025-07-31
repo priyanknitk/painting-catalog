@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Gallery - Rainbow Drops' Paintings</title>
   <link rel="stylesheet" href="assets/css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Lato&family=Playfair+Display&display=swap" rel="stylesheet" />
 </head>
 <body>
   <header>
@@ -30,25 +31,20 @@
   </footer>
 
   <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
+    data.forEach(painting => {
+      const card = document.createElement('div');
+      card.className = 'card';
+      card.innerHTML = `
+        <img src="${painting.thumbnail}" alt="${painting.title}" />
+        <div class="card-info">
+          <h4>${painting.title}</h4>
+          <p class="price">${painting.price}</p>
+          <p class="medium">${painting.medium}</p>
+        </div>
+      `;
+      grid.appendChild(card);
+    });
 
-    fetch('paintings.json')
-      .then(response => response.json())
-      .then(data => {
-        const grid = document.getElementById('gallery-grid');
-        data.forEach(painting => {
-          const card = document.createElement('div');
-          card.className = 'card';
-          card.innerHTML = `
-            <img src="${painting.thumbnail}" alt="${painting.title}" />
-            <h4>${painting.title}</h4>
-            <p>${painting.medium}, ${painting.size}</p>
-            <p class="price">${painting.price}</p>
-            <p class="status">${painting.status}</p>
-          `;
-          grid.appendChild(card);
-        });
-      });
   </script>
 </body>
 </html>

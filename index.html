@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -7,6 +8,7 @@
   <link rel="stylesheet" href="assets/css/style.css" />
   <link href="https://fonts.googleapis.com/css2?family=Lato&family=Playfair+Display&display=swap" rel="stylesheet" />
 </head>
+
 <body>
   <header>
     <h1>Art by Rainbow Drops</h1>
@@ -34,7 +36,28 @@
     <p>&copy; <span id="year"></span> Rainbow Drops. All rights reserved.</p>
   </footer>
   <script>
+    fetch('assets/data/paintings.json')
+      .then(response => response.json())
+      .then(paintings => {
+        const featuredGrid = document.getElementById('featured-grid');
+        const featuredPaintings = paintings.filter(p => p.featured);
+        featuredPaintings.forEach(p => {
+          const div = document.createElement('div');
+          div.className = 'painting-card';
+          div.innerHTML = `
+          <img src="${p.image}" alt="${p.title}" />
+          <h4>${p.title}</h4>
+          <p>${p.description}</p>
+        `;
+          featuredGrid.appendChild(div);
+        });
+      })
+      .catch(error => {
+        console.error('Error loading paintings.json:', error);
+      });
+
     document.getElementById("year").textContent = new Date().getFullYear();
   </script>
 </body>
+
 </html>

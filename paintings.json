@@ -21,7 +21,8 @@
     "size": "20\" × 30\"",
     "price": "₹5,000",
     "status": "Available",
-    "thumbnail": "assets/images/Geen eyed girl.jpg"
+    "thumbnail": "assets/images/Geen eyed girl.jpg",
+    "featured": true
   },
   {
     "title": "Radha Krishna",
@@ -45,6 +46,7 @@
     "size": "20\" × 30\"",
     "price": "₹15,000",
     "status": "Available",
-    "thumbnail": "assets/images/Buddha.jpg"
+    "thumbnail": "assets/images/Buddha.jpg",
+    "featured": true
   }
 ]

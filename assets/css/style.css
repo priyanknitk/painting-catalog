@@ -153,3 +153,27 @@ footer {
     font-size: 0.9rem;
   }
 }
+
+.painting-card {
+  background-color: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.painting-card img {
+  width: 100%;
+  height: auto;
+}
+
+.painting-card h4 {
+  margin: 0.5rem 0;
+  font-family: 'Playfair Display', serif;
+}
+
+.painting-card p {
+  font-size: 0.9rem;
+  color: #666;
+  padding: 0 1rem 1rem;
+}

@@ -1,0 +1,18 @@
+[
+  {
+    "title": "Sunset Over Hills",
+    "medium": "Oil on Canvas",
+    "size": "18\" × 24\"",
+    "price": "₹12,000",
+    "status": "Available",
+    "thumbnail": "assets/images/sample1.jpg"
+  },
+  {
+    "title": "Peaceful River",
+    "medium": "Oil on Canvas",
+    "size": "20\" × 30\"",
+    "price": "₹14,000",
+    "status": "Sold",
+    "thumbnail": "assets/images/sample2.jpg"
+  }
+]

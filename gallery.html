@@ -31,19 +31,39 @@
   </footer>
 
   <script>
-    data.forEach(painting => {
-      const card = document.createElement('div');
-      card.className = 'card';
-      card.innerHTML = `
-        <img src="${painting.thumbnail}" alt="${painting.title}" />
-        <div class="card-info">
-          <h4>${painting.title}</h4>
-          <p class="price">${painting.price}</p>
-          <p class="medium">${painting.medium}</p>
-        </div>
-      `;
-      grid.appendChild(card);
-    });
+    document.addEventListener("DOMContentLoaded", () => {
+    const grid = document.getElementById("gallery-grid");
+
+    fetch("paintings.json")
+      .then(response => {
+        if (!response.ok) {
+          throw new Error("Failed to load paintings.json");
+        }
+        return response.json();
+      })
+      .then(data => {
+        data.forEach(painting => {
+          const card = document.createElement('div');
+          card.className = 'card';
+          card.innerHTML = `
+            <img src="${painting.thumbnail}" alt="${painting.title}" />
+            <div class="card-info">
+              <h4>${painting.title}</h4>
+              <p class="price">${painting.price}</p>
+              <p class="medium">${painting.medium}</p>
+            </div>
+          `;
+          grid.appendChild(card);
+        });
+      })
+      .catch(error => {
+        console.error("Error loading paintings:", error);
+        grid.innerHTML = "<p>Unable to load paintings. Please try again later.</p>";
+      });
+
+    // Set footer year
+    document.getElementById("year").textContent = new Date().getFullYear();
+  });
 
   </script>
 </body>

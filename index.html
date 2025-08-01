@@ -36,7 +36,7 @@
     <p>&copy; <span id="year"></span> Rainbow Drops. All rights reserved.</p>
   </footer>
   <script>
-    fetch('assets/data/paintings.json')
+    fetch('paintings.json')
       .then(response => response.json())
       .then(paintings => {
         const featuredGrid = document.getElementById('featured-grid');

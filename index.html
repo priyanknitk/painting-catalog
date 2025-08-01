@@ -47,7 +47,8 @@
           div.innerHTML = `
           <img src="${p.thumbnail}" alt="${p.title}" />
           <h4>${p.title}</h4>
-          <p>${p.description}</p>
+          <p class="price">${p.price}</p>
+          <p class="medium">${p.medium}</p>
         `;
           featuredGrid.appendChild(div);
         });

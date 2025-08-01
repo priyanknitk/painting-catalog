@@ -1,6 +1,6 @@
 [
   {
-    "title": "Native Americans",
+    "title": "Spirits of the Plains",
     "medium": "Oil on Canvas",
     "size": "18\" × 24\"",
     "price": "₹18,000",
@@ -8,7 +8,7 @@
     "thumbnail": "assets/images/NativeAmericanWomen.jpg"
   },
   {
-    "title": "Car",
+    "title": "Journey in Motion",
     "medium": "Oil on Canvas",
     "size": "20\" × 30\"",
     "price": "₹8,000",
@@ -16,7 +16,7 @@
     "thumbnail": "assets/images/Car.jpg"
   },
   {
-    "title": "Emerald eyed Girl",
+    "title": "Gaze of the Emerald Muse",
     "medium": "Oil on Canvas",
     "size": "20\" × 30\"",
     "price": "₹5,000",
@@ -25,7 +25,7 @@
     "featured": true
   },
   {
-    "title": "Radha Krishna",
+    "title": "Divine Embrace",
     "medium": "Oil on Canvas",
     "size": "20\" × 30\"",
     "price": "₹12,000",
@@ -33,7 +33,7 @@
     "thumbnail": "assets/images/Radha Krishna.jpg"
   },
   {
-    "title": "Sai Baba",
+    "title": "Aura of Serenity",
     "medium": "Oil on Canvas",
     "size": "20\" × 30\"",
     "price": "₹18,000",
@@ -41,7 +41,7 @@
     "thumbnail": "assets/images/Sai Baba.jpg"
   },
   {
-    "title": "The Buddha",
+    "title": "Tranquility Within",
     "medium": "Oil on Canvas",
     "size": "20\" × 30\"",
     "price": "₹15,000",

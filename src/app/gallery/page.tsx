@@ -105,7 +105,7 @@ export default function Gallery() {
       <style jsx>{`
         .masonry-grid {
           display: grid;
-          grid-template-columns: repeat(1, 1fr);
+          grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
           gap: 2rem;
           align-items: start;
         }
@@ -116,25 +116,25 @@ export default function Gallery() {
 
         @media (min-width: 640px) {
           .masonry-grid {
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
           }
         }
 
         @media (min-width: 1024px) {
           .masonry-grid {
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
           }
         }
 
         @media (min-width: 1200px) {
           .masonry-grid {
-            grid-template-columns: repeat(4, 1fr);
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
           }
         }
 
         @media (min-width: 1600px) {
           .masonry-grid {
-            grid-template-columns: repeat(5, 1fr);
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
           }
         }
 

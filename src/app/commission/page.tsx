@@ -76,8 +76,8 @@ export default function CommissionPage() {
             Commission Your Artwork
           </h1>
           <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-            Bring your vision to life with a custom oil painting. Whether it's a portrait, 
-            spiritual piece, or something completely unique, let's create something special together.
+            Bring your vision to life with a custom oil painting. Whether it&apos;s a portrait, 
+            spiritual piece, or something completely unique, let&apos;s create something special together.
           </p>
         </div>
       </section>
@@ -139,7 +139,7 @@ export default function CommissionPage() {
                     </div>
                     <div className="ml-3">
                       <p className="text-sm font-medium text-green-800">
-                        Thank you! Your commission request has been submitted successfully. We'll get back to you within 24 hours.
+                        Thank you! Your commission request has been submitted successfully. We&apos;ll get back to you within 24 hours.
                       </p>
                     </div>
                   </div>

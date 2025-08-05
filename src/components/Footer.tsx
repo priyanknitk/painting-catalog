@@ -40,7 +40,6 @@ export default function Footer() {
             <h3 className="text-lg font-semibold mb-4">Get in Touch</h3>
             <div className="space-y-2 text-sm text-gray-300">
               <p>Artist: Niharika</p>
-              <p>Email: niharika@rainbowdrops.com</p>
               <p>Follow us for updates on new artwork</p>
             </div>
           </div>

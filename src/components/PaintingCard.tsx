@@ -9,15 +9,16 @@ interface PaintingCardProps {
 export default function PaintingCard({ painting, onClick }: PaintingCardProps) {
   return (
     <div 
-      className="bg-white rounded-lg shadow-lg overflow-hidden transition-transform hover:scale-105 cursor-pointer"
+      className="bg-white rounded-lg shadow-lg overflow-hidden transition-transform hover:scale-105 cursor-pointer break-inside-avoid"
       onClick={onClick}
     >
-      <div className="relative h-64 w-full">
+      <div className="relative w-full">
         <Image
           src={painting.image}
           alt={painting.title}
-          fill
-          className="object-cover"
+          width={400}
+          height={300}
+          className="w-full h-auto object-contain"
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
         />
       </div>

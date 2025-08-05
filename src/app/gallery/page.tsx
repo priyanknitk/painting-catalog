@@ -47,13 +47,14 @@ export default function Gallery() {
             </p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="columns-1 md:columns-2 lg:columns-3 gap-8 space-y-8">
             {paintings.map((painting) => (
-              <PaintingCard
-                key={painting.id}
-                painting={painting}
-                onClick={() => handlePaintingClick(painting)}
-              />
+              <div key={painting.id} className="mb-8 break-inside-avoid">
+                <PaintingCard
+                  painting={painting}
+                  onClick={() => handlePaintingClick(painting)}
+                />
+              </div>
             ))}
           </div>
         </div>

@@ -4,6 +4,10 @@ import { useState } from 'react';
 import { paintings, Painting } from '@/data/paintings';
 import PaintingCard from '@/components/PaintingCard';
 import PaintingModal from '@/components/PaintingModal';
+import type { Metadata } from 'next';
+
+// Note: Since this is a client component, we'll handle meta tags in layout.tsx
+// For dynamic meta tags per page, we'd need to convert to server component
 
 export default function Gallery() {
   const [selectedPainting, setSelectedPainting] = useState<Painting | null>(null);

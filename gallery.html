@@ -74,13 +74,19 @@
           const col = document.createElement('div');
           col.className = 'col-md-4 col-sm-6';
           col.innerHTML = `
-            <img src="${painting.thumbnail}" alt="${painting.title}" class="img-fluid painting-thumb"
+          <div class="card h-100 shadow-sm">
+            <img src="${painting.thumbnail}" alt="${painting.title}" class="card-img-top painting-thumb"
               data-bs-toggle="modal" data-bs-target="#paintingModal"
-              data-bs-img="${painting.fullsize}"
+              data-bs-img="${painting.thumbnail}"
               data-bs-title="${painting.title}"
               data-bs-medium="${painting.medium}"
               data-bs-price="${painting.price}" />
-          `;
+            <div class="card-body text-center">
+              <h5 class="card-title mb-2">${painting.title}</h5>
+              <p class="card-text fw-bold text-success mb-0">${painting.price}</p>
+            </div>
+          </div>
+        `;
           gallery.appendChild(col);
         });
 

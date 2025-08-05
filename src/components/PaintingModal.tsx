@@ -30,10 +30,6 @@ export default function PaintingModal({ painting, isOpen, onClose }: PaintingMod
   }, [isOpen, onClose]);
 
   const handleInquire = () => {
-    // Navigate to contact page with painting info
-    const subject = `Inquiry about "${painting?.title}"`;
-    const message = `I'm interested in learning more about the painting "${painting?.title}" (${painting?.price}). Please provide more details about availability and purchase process.`;
-    
     // Create a mailto link or navigate to contact page
     window.location.href = '/contact';
   };

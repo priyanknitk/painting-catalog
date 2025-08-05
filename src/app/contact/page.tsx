@@ -9,7 +9,7 @@ export default function Contact() {
           </h1>
           <p className="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
             Interested in commissioning a piece or learning more about the artwork? 
-            I'd love to hear from you.
+            I&apos;d love to hear from you.
           </p>
         </div>
       </section>
@@ -55,8 +55,8 @@ export default function Contact() {
               <div className="mt-8 pt-8 border-t border-gray-200">
                 <h3 className="text-lg font-medium text-gray-800 mb-4">About Commissions</h3>
                 <p className="text-gray-600 leading-relaxed">
-                  I welcome custom commission requests. Whether you're looking for a portrait, 
-                  spiritual piece, or something entirely unique, I'd be happy to discuss your vision 
+                  I welcome custom commission requests. Whether you&apos;re looking for a portrait, 
+                  spiritual piece, or something entirely unique, I&apos;d be happy to discuss your vision 
                   and bring it to life on canvas.
                 </p>
               </div>

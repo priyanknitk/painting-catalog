@@ -16,14 +16,6 @@
     "thumbnail": "assets/images/Radha Krishna.jpg"
   },
   {
-    "title": "Aura of Serenity",
-    "medium": "Oil on Canvas",
-    "size": "36\" × 48\"",
-    "price": "₹18,000",
-    "status": "Available",
-    "thumbnail": "assets/images/Sai Baba.jpg"
-  },
-  {
     "title": "Tranquility Within",
     "medium": "Oil on Canvas",
     "size": "36\" × 48\"",
@@ -31,6 +23,14 @@
     "status": "Available",
     "thumbnail": "assets/images/Buddha.jpg",
     "featured": true
+  },
+  {
+    "title": "Aura of Serenity",
+    "medium": "Oil on Canvas",
+    "size": "36\" × 48\"",
+    "price": "₹18,000",
+    "status": "Available",
+    "thumbnail": "assets/images/Sai Baba.jpg"
   },
   {
     "title": "Journey in Motion",

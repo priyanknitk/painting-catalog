@@ -240,10 +240,8 @@ export default function CommissionPage() {
                     className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-amber-500 text-gray-900 bg-white"
                   >
                     <option value="">Select size</option>
-                    <option value="16x20">16x20 inches</option>
-                    <option value="18x24">18x24 inches</option>
-                    <option value="24x30">24x30 inches</option>
-                    <option value="30x40">30x40 inches</option>
+                    <option value="24x36">24x36 inches</option>
+                    <option value="36x48">36x48 inches</option>
                     <option value="custom">Custom size</option>
                   </select>
                 </div>

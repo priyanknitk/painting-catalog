@@ -11,7 +11,7 @@ export interface Painting {
 export const paintings: Painting[] = [
   {
     id: 1,
-    title: "Buddha",
+    title: "The Enlightened One",
     image: "/images/Buddha.jpg",
     description: "A serene representation of Buddha in meditation, capturing the essence of inner peace and enlightenment.",
     medium: "Oil on Canvas",
@@ -20,7 +20,7 @@ export const paintings: Painting[] = [
   },
   {
     id: 2,
-    title: "Car",
+    title: "Journey in Motion",
     image: "/images/Car.jpg",
     description: "A vibrant depiction of a classic automobile, showcasing bold colors and dynamic composition.",
     medium: "Oil on Canvas",
@@ -29,7 +29,7 @@ export const paintings: Painting[] = [
   },
   {
     id: 3,
-    title: "Green Eyed Girl",
+    title: "Gaze of the Emerald Muse",
     image: "/images/Geen eyed girl.jpg",
     description: "A mesmerizing portrait featuring striking green eyes that seem to look into your soul.",
     medium: "Oil on Canvas",
@@ -38,7 +38,7 @@ export const paintings: Painting[] = [
   },
   {
     id: 4,
-    title: "Native American Women",
+    title: "Spirits of the Plains",
     image: "/images/NativeAmericanWomen.jpg",
     description: "A powerful tribute to Native American heritage, capturing strength and cultural pride.",
     medium: "Oil on Canvas",
@@ -47,7 +47,7 @@ export const paintings: Painting[] = [
   },
   {
     id: 5,
-    title: "Radha Krishna",
+    title: "Divine Embrace",
     image: "/images/Radha Krishna.jpg",
     description: "A divine representation of eternal love, depicting the spiritual bond between Radha and Krishna.",
     medium: "Oil on Canvas",
@@ -56,7 +56,7 @@ export const paintings: Painting[] = [
   },
   {
     id: 6,
-    title: "Sai Baba",
+    title: "Shirdi's Beloved Saint",
     image: "/images/Sai Baba.jpg",
     description: "A spiritual masterpiece honoring the revered saint, radiating compassion and divine grace.",
     medium: "Oil on Canvas",

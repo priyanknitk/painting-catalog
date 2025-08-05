@@ -33,7 +33,6 @@ export default function CommissionPage() {
       
       // Add custom fields that aren't directly in the form
       formData.append('_subject', 'New Commission Request - Rainbow Drops');
-      formData.append('_cc', 'your-email@example.com'); // Replace with your email
       
       const response = await fetch('https://formspree.io/f/mjkooprl', {
         method: 'POST',

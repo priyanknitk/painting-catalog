@@ -37,13 +37,13 @@
     }
 
     .card-img-top {
-      height: 350px;
+      height: 450px;
       object-fit: cover;
       background: #f8f9fa;
     }
 
     .card {
-      min-height: 450px;
+      min-height: 550px;
       border: none;
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
       transition: box-shadow 0.3s ease;
@@ -106,7 +106,7 @@
         const gallery = document.getElementById('gallery');
         data.forEach(painting => {
           const col = document.createElement('div');
-          col.className = 'col-md-6 col-sm-12';
+          col.className = 'col-md-4 col-sm-6 col-12';
           col.innerHTML = `
           <div class="card h-100 shadow-sm">
             <img src="${painting.thumbnail}" alt="${painting.title}" class="card-img-top painting-thumb"

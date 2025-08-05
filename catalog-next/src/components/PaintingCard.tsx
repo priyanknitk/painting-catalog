@@ -25,7 +25,7 @@ export default function PaintingCard({ painting, onClick }: PaintingCardProps) {
         <h3 className="text-xl font-semibold text-gray-800 mb-2">{painting.title}</h3>
         <p className="text-gray-600 text-sm mb-2">{painting.medium}</p>
         <p className="text-gray-600 text-sm mb-2">{painting.size}</p>
-        <p className="text-amber-700 font-medium">{painting.year}</p>
+        <p className="text-amber-700 font-medium text-lg">{painting.price}</p>
       </div>
     </div>
   );

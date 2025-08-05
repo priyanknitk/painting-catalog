@@ -63,7 +63,7 @@ export default function PaintingModal({ painting, isOpen, onClose }: PaintingMod
               <div>
                 <p className="text-gray-600"><span className="font-semibold">Medium:</span> {painting.medium}</p>
                 <p className="text-gray-600"><span className="font-semibold">Size:</span> {painting.size}</p>
-                <p className="text-gray-600"><span className="font-semibold">Year:</span> {painting.year}</p>
+                <p className="text-amber-700 text-xl font-bold"><span className="font-semibold text-gray-600">Price:</span> {painting.price}</p>
               </div>
             </div>
             <div>

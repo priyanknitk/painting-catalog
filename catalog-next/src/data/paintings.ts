@@ -5,7 +5,7 @@ export interface Painting {
   description: string;
   medium: string;
   size: string;
-  year: number;
+  price: string;
 }
 
 export const paintings: Painting[] = [
@@ -16,7 +16,7 @@ export const paintings: Painting[] = [
     description: "A serene representation of Buddha in meditation, capturing the essence of inner peace and enlightenment.",
     medium: "Oil on Canvas",
     size: "24x18 inches",
-    year: 2023
+    price: "₹15,000"
   },
   {
     id: 2,
@@ -25,7 +25,7 @@ export const paintings: Painting[] = [
     description: "A vibrant depiction of a classic automobile, showcasing bold colors and dynamic composition.",
     medium: "Oil on Canvas",
     size: "20x16 inches",
-    year: 2022
+    price: "₹8,000"
   },
   {
     id: 3,
@@ -34,7 +34,7 @@ export const paintings: Painting[] = [
     description: "A mesmerizing portrait featuring striking green eyes that seem to look into your soul.",
     medium: "Oil on Canvas",
     size: "22x18 inches",
-    year: 2023
+    price: "₹5,000"
   },
   {
     id: 4,
@@ -43,7 +43,7 @@ export const paintings: Painting[] = [
     description: "A powerful tribute to Native American heritage, capturing strength and cultural pride.",
     medium: "Oil on Canvas",
     size: "26x20 inches",
-    year: 2022
+    price: "₹18,000"
   },
   {
     id: 5,
@@ -52,7 +52,7 @@ export const paintings: Painting[] = [
     description: "A divine representation of eternal love, depicting the spiritual bond between Radha and Krishna.",
     medium: "Oil on Canvas",
     size: "28x22 inches",
-    year: 2023
+    price: "₹12,000"
   },
   {
     id: 6,
@@ -61,6 +61,6 @@ export const paintings: Painting[] = [
     description: "A spiritual masterpiece honoring the revered saint, radiating compassion and divine grace.",
     medium: "Oil on Canvas",
     size: "24x20 inches",
-    year: 2022
+    price: "₹18,000"
   }
 ];

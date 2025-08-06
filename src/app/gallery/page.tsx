@@ -5,8 +5,6 @@ import { paintings, Painting } from '@/data/paintings';
 import PaintingCard from '@/components/PaintingCard';
 import PaintingModal from '@/components/PaintingModal';
 
-// Note: Since this is a client component, metadata should be handled in layout or moved to a server component wrapper
-
 export default function Gallery() {
   const [selectedPainting, setSelectedPainting] = useState<Painting | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -106,37 +104,33 @@ export default function Gallery() {
 
       <style jsx>{`
         .masonry-grid {
-          display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-          gap: 2rem;
-          align-items: start;
+          columns: 1;
+          column-gap: 2rem;
+          column-fill: balance;
         }
         
         .masonry-item {
+          break-inside: avoid;
+          margin-bottom: 2rem;
+          display: inline-block;
           width: 100%;
         }
 
         @media (min-width: 640px) {
           .masonry-grid {
-            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            columns: 2;
           }
         }
 
         @media (min-width: 1024px) {
           .masonry-grid {
-            grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+            columns: 3;
           }
         }
 
-        @media (min-width: 1200px) {
+        @media (min-width: 1440px) {
           .masonry-grid {
-            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-          }
-        }
-
-        @media (min-width: 1600px) {
-          .masonry-grid {
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            columns: 4;
           }
         }
 

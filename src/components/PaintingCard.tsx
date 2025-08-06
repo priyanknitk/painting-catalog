@@ -27,9 +27,10 @@ export default function PaintingCard({ painting, onClick, onTagClick, selectedTa
         {/* Overlay gradient on hover */}
         <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
         
-        {/* Price badge */}
-        <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm rounded-full px-3 py-1 shadow-lg">
-          <span className="text-amber-700 font-bold text-sm">{painting.price}</span>
+        {/* Bottom gradient price overlay */}
+        <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+          <div className="text-white font-bold text-lg mb-1">{painting.price}</div>
+          <div className="text-white/80 text-xs">{painting.medium} • {painting.size}</div>
         </div>
 
         {/* View details overlay */}

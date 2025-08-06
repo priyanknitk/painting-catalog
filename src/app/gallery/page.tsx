@@ -1,9 +1,78 @@
 'use client';
 
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useRef, useEffect } from 'react';
 import { paintings, Painting } from '@/data/paintings';
 import PaintingCard from '@/components/PaintingCard';
 import PaintingModal from '@/components/PaintingModal';
+
+interface CustomDropdownProps {
+  value: string;
+  onChange: (value: string) => void;
+  options: { value: string; label: string }[];
+}
+
+function CustomDropdown({ value, onChange, options }: CustomDropdownProps) {
+  const [isOpen, setIsOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setIsOpen(false);
+      }
+    }
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
+
+  const selectedOption = options.find(option => option.value === value);
+
+  return (
+    <div className="relative w-full" ref={dropdownRef}>
+      <button
+        onClick={() => setIsOpen(!isOpen)}
+        className="w-full px-6 py-4 pr-12 rounded-2xl border-2 border-amber-200 focus:outline-none focus:ring-4 focus:ring-amber-500/20 focus:border-amber-500 shadow-lg text-gray-800 bg-gradient-to-r from-white to-amber-50 backdrop-blur-sm font-semibold text-lg hover:border-amber-300 hover:shadow-xl transition-all duration-300 cursor-pointer text-left"
+      >
+        {selectedOption?.label}
+      </button>
+      
+      {/* Custom Dropdown Arrow */}
+      <div className="absolute inset-y-0 right-0 flex items-center pr-4 pointer-events-none">
+        <svg 
+          className={`w-6 h-6 text-amber-600 transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`} 
+          fill="none" 
+          stroke="currentColor" 
+          viewBox="0 0 24 24"
+        >
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+        </svg>
+      </div>
+
+      {/* Custom Dropdown Options */}
+      {isOpen && (
+        <div className="absolute top-full left-0 right-0 mt-2 bg-white border-2 border-amber-200 rounded-2xl shadow-2xl z-50 overflow-hidden">
+          {options.map((option) => (
+            <button
+              key={option.value}
+              onClick={() => {
+                onChange(option.value);
+                setIsOpen(false);
+              }}
+              className={`w-full px-6 py-4 text-left font-semibold transition-all duration-200 ${
+                option.value === value
+                  ? 'bg-amber-100 text-amber-800'
+                  : 'text-gray-800 hover:bg-amber-50'
+              }`}
+            >
+              {option.label}
+            </button>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
 
 export default function Gallery() {
   const [selectedPainting, setSelectedPainting] = useState<Painting | null>(null);
@@ -84,16 +153,16 @@ export default function Gallery() {
           
           {/* Filter Bar */}
           <div className="max-w-4xl mx-auto mt-8 space-y-6">
-            <div className="max-w-md mx-auto">
-              <select
+            <div className="max-w-md mx-auto relative">
+              <CustomDropdown
                 value={sortBy}
-                onChange={(e) => setSortBy(e.target.value as 'title' | 'price' | 'newest')}
-                className="w-full px-6 py-3 rounded-full border border-gray-200 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent shadow-sm text-gray-700 bg-white/80 backdrop-blur-sm font-medium"
-              >
-                <option value="newest">Newest First</option>
-                <option value="title">Sort by Title</option>
-                <option value="price">Sort by Price</option>
-              </select>
+                onChange={(value) => setSortBy(value as 'title' | 'price' | 'newest')}
+                options={[
+                  { value: 'newest', label: 'Newest First' },
+                  { value: 'title', label: 'Sort by Title' },
+                  { value: 'price', label: 'Sort by Price' }
+                ]}
+              />
             </div>
             
             {/* Selected Tags Display */}

@@ -72,7 +72,7 @@ export default function PaintingModal({ painting, isOpen, onClose }: PaintingMod
       onClick={onClose}
     >
       <div 
-        className="bg-white rounded-2xl max-w-5xl w-full max-h-[95vh] overflow-hidden shadow-2xl animate-in zoom-in-95 duration-300"
+        className="bg-white rounded-2xl max-w-5xl w-full max-h-[95vh] overflow-hidden shadow-2xl animate-in zoom-in-95 duration-300 mx-auto"
         onClick={(e) => e.stopPropagation()}
       >
         <div className="relative">
@@ -87,22 +87,23 @@ export default function PaintingModal({ painting, isOpen, onClose }: PaintingMod
           </button>
 
           {/* Content Layout */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 min-h-[70vh]">
+          <div className="grid grid-cols-1 lg:grid-cols-2 min-h-[50vh] lg:min-h-[70vh]">
             {/* Image Section */}
-            <div className="relative bg-gradient-to-br from-gray-50 to-gray-100 p-8 flex items-center justify-center">
-              <div className="relative w-full h-full max-h-[500px] rounded-xl overflow-hidden shadow-lg">
+            <div className="relative bg-gradient-to-br from-gray-50 to-gray-100 p-4 sm:p-8 flex items-center justify-center min-h-[40vh] lg:min-h-auto">
+              <div className="relative w-full h-auto max-w-full rounded-xl overflow-hidden shadow-lg" style={{ aspectRatio: 'auto' }}>
                 <Image
                   src={painting.image}
                   alt={painting.title}
-                  fill
-                  className="object-cover"
+                  width={800}
+                  height={600}
+                  className="w-full h-auto object-contain rounded-xl"
                   sizes="(max-width: 1024px) 100vw, 50vw"
                 />
               </div>
             </div>
 
             {/* Details Section */}
-            <div className="p-8 lg:p-12 flex flex-col justify-between overflow-y-auto">
+            <div className="p-4 sm:p-6 lg:p-12 flex flex-col justify-between overflow-y-auto">
               <div>
                 <h2 className="text-4xl font-bold text-gray-900 mb-6 leading-tight">{painting.title}</h2>
                 

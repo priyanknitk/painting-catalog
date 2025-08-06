@@ -9,6 +9,7 @@ export default function Gallery() {
   const [selectedPainting, setSelectedPainting] = useState<Painting | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [sortBy, setSortBy] = useState<'title' | 'price' | 'newest'>('newest');
+  const [selectedTags, setSelectedTags] = useState<string[]>([]);
 
   const handlePaintingClick = (painting: Painting) => {
     setSelectedPainting(painting);
@@ -20,22 +21,52 @@ export default function Gallery() {
     setSelectedPainting(null);
   };
 
-  // Sort paintings
-  const sortedPaintings = useMemo(() => {
+  const handleTagClick = (tag: string) => {
+    setSelectedTags(prev => 
+      prev.includes(tag) 
+        ? prev.filter(t => t !== tag)
+        : [...prev, tag]
+    );
+  };
+
+  const clearAllFilters = () => {
+    setSelectedTags([]);
+  };
+
+  // Get all unique tags from paintings
+  const allTags = useMemo(() => {
+    const tagSet = new Set<string>();
+    paintings.forEach(painting => {
+      painting.tags.forEach(tag => tagSet.add(tag));
+    });
+    return Array.from(tagSet).sort();
+  }, []);
+
+  // Filter and sort paintings
+  const filteredAndSortedPaintings = useMemo(() => {
+    // First filter by tags
+    let filtered = paintings;
+    if (selectedTags.length > 0) {
+      filtered = paintings.filter(painting => 
+        selectedTags.some(tag => painting.tags.includes(tag))
+      );
+    }
+
+    // Then sort
     switch (sortBy) {
       case 'title':
-        return [...paintings].sort((a, b) => a.title.localeCompare(b.title));
+        return [...filtered].sort((a, b) => a.title.localeCompare(b.title));
       case 'price':
-        return [...paintings].sort((a, b) => {
+        return [...filtered].sort((a, b) => {
           const priceA = parseInt(a.price.replace(/[₹,]/g, ''));
           const priceB = parseInt(b.price.replace(/[₹,]/g, ''));
           return priceA - priceB;
         });
       case 'newest':
       default:
-        return [...paintings].reverse(); // Assuming higher IDs are newer
+        return [...filtered].reverse(); // Assuming higher IDs are newer
     }
-  }, [sortBy]);
+  }, [selectedTags, sortBy]);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-amber-50">
@@ -52,16 +83,50 @@ export default function Gallery() {
           </p>
           
           {/* Filter Bar */}
-          <div className="max-w-md mx-auto mt-8">
-            <select
-              value={sortBy}
-              onChange={(e) => setSortBy(e.target.value as 'title' | 'price' | 'newest')}
-              className="w-full px-6 py-3 rounded-full border border-gray-200 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent shadow-sm text-gray-700 bg-white/80 backdrop-blur-sm font-medium"
-            >
-              <option value="newest">Newest First</option>
-              <option value="title">Sort by Title</option>
-              <option value="price">Sort by Price</option>
-            </select>
+          <div className="max-w-4xl mx-auto mt-8 space-y-6">
+            <div className="max-w-md mx-auto">
+              <select
+                value={sortBy}
+                onChange={(e) => setSortBy(e.target.value as 'title' | 'price' | 'newest')}
+                className="w-full px-6 py-3 rounded-full border border-gray-200 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent shadow-sm text-gray-700 bg-white/80 backdrop-blur-sm font-medium"
+              >
+                <option value="newest">Newest First</option>
+                <option value="title">Sort by Title</option>
+                <option value="price">Sort by Price</option>
+              </select>
+            </div>
+            
+            {/* Selected Tags Display */}
+            {selectedTags.length > 0 && (
+              <div className="text-center">
+                <div className="flex items-center justify-center gap-4 flex-wrap">
+                  <span className="text-gray-700 font-medium">Filtered by:</span>
+                  {selectedTags.map((tag) => (
+                    <span
+                      key={tag}
+                      className="inline-flex items-center gap-2 bg-amber-500 text-white px-4 py-2 rounded-full text-sm font-medium shadow-lg"
+                    >
+                      {tag}
+                      <button
+                        onClick={() => handleTagClick(tag)}
+                        className="hover:bg-amber-600 rounded-full p-1 transition-colors duration-200"
+                        aria-label={`Remove ${tag} filter`}
+                      >
+                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                      </button>
+                    </span>
+                  ))}
+                  <button
+                    onClick={clearAllFilters}
+                    className="text-gray-500 hover:text-gray-700 text-sm font-medium underline transition-colors duration-200 ml-2"
+                  >
+                    Clear all filters
+                  </button>
+                </div>
+              </div>
+            )}
           </div>
         </div>
       </section>
@@ -73,25 +138,46 @@ export default function Gallery() {
             <div className="inline-flex items-center bg-white/80 backdrop-blur-sm rounded-full px-6 py-2 shadow-lg border border-gray-100">
               <div className="h-2 w-2 bg-amber-500 rounded-full mr-3 animate-pulse"></div>
               <p className="text-gray-600 font-medium">
-                {sortedPaintings.length} painting{sortedPaintings.length !== 1 ? 's' : ''} in collection
+                {filteredAndSortedPaintings.length} painting{filteredAndSortedPaintings.length !== 1 ? 's' : ''} 
+                {selectedTags.length > 0 ? ' matching filters' : ' in collection'}
               </p>
             </div>
           </div>
           
-          <div className="masonry-grid">
-            {sortedPaintings.map((painting, index) => (
-              <div 
-                key={painting.id} 
-                className="masonry-item animate-fade-in-up"
-                style={{ animationDelay: `${index * 100}ms` }}
-              >
-                <PaintingCard
-                  painting={painting}
-                  onClick={() => handlePaintingClick(painting)}
-                />
+          {filteredAndSortedPaintings.length === 0 ? (
+            <div className="text-center py-16">
+              <div className="max-w-md mx-auto">
+                <div className="text-6xl mb-4">🎨</div>
+                <h3 className="text-xl font-semibold text-gray-700 mb-2">No paintings found</h3>
+                <p className="text-gray-500 mb-6">
+                  No paintings match your selected filters. Try removing some tags or browse all paintings.
+                </p>
+                <button
+                  onClick={clearAllFilters}
+                  className="px-6 py-3 bg-amber-500 text-white rounded-full font-medium hover:bg-amber-600 transition-colors duration-200"
+                >
+                  Show All Paintings
+                </button>
               </div>
-            ))}
-          </div>
+            </div>
+          ) : (
+            <div className="masonry-grid">
+              {filteredAndSortedPaintings.map((painting, index) => (
+                <div 
+                  key={painting.id} 
+                  className="masonry-item animate-fade-in-up"
+                  style={{ animationDelay: `${index * 100}ms` }}
+                >
+                  <PaintingCard
+                    painting={painting}
+                    onClick={() => handlePaintingClick(painting)}
+                    onTagClick={handleTagClick}
+                    selectedTags={selectedTags}
+                  />
+                </div>
+              ))}
+            </div>
+          )}
         </div>
       </section>
 

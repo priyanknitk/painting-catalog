@@ -4,9 +4,11 @@ import { Painting } from '@/data/paintings';
 interface PaintingCardProps {
   painting: Painting;
   onClick?: () => void;
+  onTagClick?: (tag: string) => void;
+  selectedTags?: string[];
 }
 
-export default function PaintingCard({ painting, onClick }: PaintingCardProps) {
+export default function PaintingCard({ painting, onClick, onTagClick, selectedTags = [] }: PaintingCardProps) {
   return (
     <div 
       className="group bg-white rounded-2xl shadow-lg hover:shadow-2xl overflow-hidden transition-all duration-500 hover:scale-[1.02] cursor-pointer break-inside-avoid border border-gray-100"
@@ -43,10 +45,31 @@ export default function PaintingCard({ painting, onClick }: PaintingCardProps) {
           {painting.title}
         </h3>
         <p className="text-gray-500 text-sm mb-1 font-medium">{painting.medium}</p>
-        <p className="text-gray-400 text-sm">{painting.size}</p>
+        <p className="text-gray-400 text-sm mb-3">{painting.size}</p>
+        
+        {/* Tags */}
+        <div className="flex flex-wrap gap-2 mb-4">
+          {painting.tags.map((tag, index) => (
+            <button
+              key={index}
+              onClick={(e) => {
+                e.stopPropagation(); // Prevent card click
+                onTagClick?.(tag);
+              }}
+              className={`inline-block text-xs font-medium px-2.5 py-1 rounded-full border transition-all duration-200 ${
+                selectedTags.includes(tag)
+                  ? 'bg-amber-500 text-white border-amber-500 shadow-md'
+                  : 'bg-gradient-to-r from-amber-100 to-amber-50 text-amber-800 border-amber-200 hover:from-amber-200 hover:to-amber-100 hover:border-amber-300'
+              } ${onTagClick ? 'cursor-pointer hover:scale-105' : 'cursor-default'}`}
+              disabled={!onTagClick}
+            >
+              {tag}
+            </button>
+          ))}
+        </div>
         
         {/* Decorative line */}
-        <div className="mt-4 h-0.5 bg-gradient-to-r from-amber-400 to-amber-600 w-0 group-hover:w-full transition-all duration-500"></div>
+        <div className="mt-2 h-0.5 bg-gradient-to-r from-amber-400 to-amber-600 w-0 group-hover:w-full transition-all duration-500"></div>
       </div>
     </div>
   );

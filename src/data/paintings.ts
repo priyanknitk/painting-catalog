@@ -6,6 +6,7 @@ export interface Painting {
   medium: string;
   size: string;
   price: string;
+  tags: string[];
 }
 
 export const paintings: Painting[] = [
@@ -16,7 +17,8 @@ export const paintings: Painting[] = [
     description: "A serene representation of Buddha in meditation, capturing the essence of inner peace and enlightenment.",
     medium: "Oil on Canvas",
     size: "36x48 inches",
-    price: "₹15,000"
+    price: "₹15,000",
+    tags: ["Buddha", "Spiritual", "Meditation", "Peace"]
   },
   {
     id: 2,
@@ -25,7 +27,8 @@ export const paintings: Painting[] = [
     description: "A vibrant depiction of a classic automobile, showcasing bold colors and dynamic composition.",
     medium: "Oil on Canvas",
     size: "24x36 inches",
-    price: "₹8,000"
+    price: "₹8,000",
+    tags: ["Car", "Automobile", "Modern"]
   },
   {
     id: 3,
@@ -34,7 +37,8 @@ export const paintings: Painting[] = [
     description: "A mesmerizing portrait featuring striking green eyes that seem to look into your soul.",
     medium: "Oil on Canvas",
     size: "24x36 inches",
-    price: "₹5,000"
+    price: "₹5,000",
+    tags: ["Portrait", "Girl", "Green Eyes", "Muse"]
   },
   {
     id: 4,
@@ -43,7 +47,8 @@ export const paintings: Painting[] = [
     description: "A powerful tribute to Native American heritage, capturing strength and cultural pride.",
     medium: "Oil on Canvas",
     size: "36x48 inches",
-    price: "₹18,000"
+    price: "₹18,000",
+    tags: ["Native American", "Women", "Heritage", "Culture"]
   },
   {
     id: 5,
@@ -52,7 +57,8 @@ export const paintings: Painting[] = [
     description: "A divine representation of eternal love, depicting the spiritual bond between Radha and Krishna.",
     medium: "Oil on Canvas",
     size: "36x48 inches",
-    price: "₹12,000"
+    price: "₹12,000",
+    tags: ["Radha", "Krishna", "Love", "Divine", "Spiritual"]
   },
   {
     id: 6,
@@ -61,7 +67,8 @@ export const paintings: Painting[] = [
     description: "A spiritual masterpiece honoring the revered saint, radiating compassion and divine grace.",
     medium: "Oil on Canvas",
     size: "36x48 inches",
-    price: "₹18,000"
+    price: "₹18,000",
+    tags: ["Sai Baba", "Saint", "Spiritual"]
   },
   {
     id: 7,
@@ -70,7 +77,8 @@ export const paintings: Painting[] = [
     description: "A profound meditation on enlightenment, capturing Buddha in deep contemplation.",
     medium: "Oil on Canvas",
     size: "36x48 inches",
-    price: "₹20,000"
+    price: "₹20,000",
+    tags: ["Buddha", "Enlightenment", "Meditation", "Spiritual"]
   },
   {
     id: 8,
@@ -79,7 +87,8 @@ export const paintings: Painting[] = [
     description: "An enchanting portrayal of Lord Krishna with his divine flute, emanating celestial melodies that touch the soul and inspire devotion.",
     medium: "Oil on Canvas",
     size: "36x48 inches",
-    price: "₹16,000"
+    price: "₹16,000",
+    tags: ["Krishna", "Flute", "Divine", "Spiritual"]
   },
   {
     id: 9,
@@ -88,7 +97,8 @@ export const paintings: Painting[] = [
     description: "A charming portrait of a village maiden, capturing the simplicity and natural beauty of rural life with grace and authenticity.",
     medium: "Oil on Canvas",
     size: "36x48 inches",
-    price: "₹12,000"
+    price: "₹12,000",
+    tags: ["Village", "Girl", "Portrait", "Rural"]
   },
   {
     id: 10,
@@ -97,6 +107,7 @@ export const paintings: Painting[] = [
     description: "A peaceful village scene that celebrates the tranquil rhythm of rural life, showcasing traditional architecture and natural harmony.",
     medium: "Oil on Canvas",
     size: "36x48 inches",
-    price: "₹15,000"
+    price: "₹15,000",
+    tags: ["Village", "Landscape", "Rural", "Traditional"]
   }
 ];

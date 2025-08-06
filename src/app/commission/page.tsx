@@ -2,6 +2,8 @@
 
 import { useState } from 'react';
 
+// Note: Since this is a client component, metadata should be handled in layout or moved to a server component wrapper
+
 export default function CommissionPage() {
   const [formData, setFormData] = useState({
     name: '',

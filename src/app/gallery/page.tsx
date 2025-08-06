@@ -5,6 +5,8 @@ import { paintings, Painting } from '@/data/paintings';
 import PaintingCard from '@/components/PaintingCard';
 import PaintingModal from '@/components/PaintingModal';
 
+// Note: Since this is a client component, metadata should be handled in layout or moved to a server component wrapper
+
 export default function Gallery() {
   const [selectedPainting, setSelectedPainting] = useState<Painting | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);

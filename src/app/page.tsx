@@ -1,12 +1,65 @@
 import Image from "next/image";
 import Link from "next/link";
 import { paintings } from "@/data/paintings";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Rainbow Drops - Oil Paintings by Niharika | Art Gallery",
+  description: "Discover beautiful oil paintings by artist Niharika. Explore our collection of spiritual, portrait, and contemporary artworks. Commission custom paintings.",
+  keywords: "oil paintings, art gallery, artist Niharika, spiritual art, portrait paintings, contemporary art, custom paintings, commission art",
+  openGraph: {
+    title: "Rainbow Drops - Oil Paintings by Niharika",
+    description: "Discover beautiful oil paintings by artist Niharika. Explore our collection of spiritual, portrait, and contemporary artworks.",
+    url: "/",
+    type: "website",
+  },
+  alternates: {
+    canonical: "/",
+  },
+};
 
 export default function Home() {
   const featuredPaintings = paintings.slice(0, 3);
 
+  // Schema markup for featured artworks
+  const artworkSchema = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "Featured Oil Paintings",
+    "description": "Featured collection of oil paintings by artist Niharika",
+    "numberOfItems": featuredPaintings.length,
+    "itemListElement": featuredPaintings.map((painting, index) => ({
+      "@type": "ListItem",
+      "position": index + 1,
+      "item": {
+        "@type": "VisualArtwork",
+        "name": painting.title,
+        "description": painting.description,
+        "artMedium": painting.medium,
+        "artworkSurface": "Canvas",
+        "width": painting.size,
+        "creator": {
+          "@type": "Person",
+          "name": "Niharika"
+        },
+        "image": `https://rainbowdrops.vercel.app${painting.image}`,
+        "offers": {
+          "@type": "Offer",
+          "price": painting.price.replace(/[₹,]/g, ''),
+          "priceCurrency": "INR",
+          "availability": "https://schema.org/InStock"
+        }
+      }
+    }))
+  };
+
   return (
     <div className="min-h-screen">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(artworkSchema) }}
+      />
+      
       {/* Hero Section */}
       <section className="relative h-screen flex items-center justify-center bg-gradient-to-br from-amber-50 to-orange-100">
         <div className="absolute inset-0 bg-black opacity-20"></div>
@@ -24,6 +77,7 @@ export default function Home() {
           <Link 
             href="/gallery"
             className="inline-block bg-amber-700 hover:bg-amber-800 text-white px-8 py-4 rounded-lg text-lg font-medium transition-colors shadow-lg hover:shadow-xl"
+            aria-label="Explore our complete oil paintings gallery"
           >
             Explore Gallery
           </Link>
@@ -63,22 +117,26 @@ export default function Home() {
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {featuredPaintings.map((painting) => (
-              <div key={painting.id} className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+              <article key={painting.id} className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
                 <div className="relative h-64">
                   <Image
                     src={painting.image}
-                    alt={painting.title}
+                    alt={`${painting.title} - ${painting.medium} oil painting by Niharika featuring ${painting.description.toLowerCase()}`}
                     fill
                     className="object-cover"
                     sizes="(max-width: 768px) 100vw, 33vw"
+                    loading="lazy"
                   />
                 </div>
                 <div className="p-6">
                   <h3 className="text-xl font-semibold text-gray-800 mb-2">{painting.title}</h3>
-                  <p className="text-gray-600 text-sm mb-2">{painting.medium}</p>
-                  <p className="text-gray-700 text-sm line-clamp-3">{painting.description}</p>
+                  <p className="text-gray-600 text-sm mb-2" itemProp="artMedium">{painting.medium}</p>
+                  <p className="text-gray-700 text-sm line-clamp-3" itemProp="description">{painting.description}</p>
+                  <div className="mt-3 text-amber-700 font-bold" itemProp="offers" itemScope itemType="https://schema.org/Offer">
+                    <span itemProp="price">{painting.price}</span>
+                  </div>
                 </div>
-              </div>
+              </article>
             ))}
           </div>
           

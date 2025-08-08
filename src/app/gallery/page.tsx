@@ -146,6 +146,7 @@ export default function Gallery() {
           <h1 className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-gray-800 to-amber-700 bg-clip-text text-transparent mb-6">
             Art Gallery
           </h1>
+          <div className="brush-divider w-screen relative left-1/2 right-1/2 ml-[-50vw] mr-[-50vw] mb-8" />
           <p className="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed mb-8">
             Explore our complete collection of oil paintings. Each piece represents hours of 
             passionate work, bringing together traditional techniques with contemporary vision.

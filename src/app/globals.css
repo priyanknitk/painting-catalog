@@ -43,3 +43,18 @@ body {
 html {
   scroll-behavior: smooth;
 }
+
+/* Artistic utilities */
+.brush-divider {
+  position: relative;
+  height: 16px;
+}
+.brush-divider::before {
+  content: "";
+  position: absolute; inset: 0;
+  background: linear-gradient(90deg, rgba(180,83,9,0) 0%, rgba(180,83,9,0.55) 15%, rgba(210,105,30,0.55) 85%, rgba(210,105,30,0) 100%);
+  -webkit-mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 10" preserveAspectRatio="none"><path d="M0 6 Q 10 2, 20 6 T 40 6 T 60 6 T 80 6 T 100 6 V 10 H 0 Z" fill="white"/></svg>');
+  mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 10" preserveAspectRatio="none"><path d="M0 6 Q 10 2, 20 6 T 40 6 T 60 6 T 80 6 T 100 6 V 10 H 0 Z" fill="white"/></svg>');
+  mask-size: 100% 100%;
+  -webkit-mask-size: 100% 100%;
+}
